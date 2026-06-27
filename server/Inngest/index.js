@@ -12,9 +12,9 @@ const syncUserCreation = inngest.createFunction(
         await prisma.user.create({
             data:{
                 id: data.id,
-                email: data?.email_addresses[0]?.email_addres,
+                email: data?.email_addresses?.[0]?.email_address,
                 name: data?.first_name + " " + data?.last_name,
-                image:data?.image_url,
+                image: data?.image_url,
             }
         })
     }
@@ -47,7 +47,7 @@ const syncUserUpdation = inngest.createFunction(
             },
             data:{
                 
-                email: data?.email_addresses[0]?.email_addres,
+                email: data?.email_addresses?.[0]?.email_address,
                 name: data?.first_name + " " + data?.last_name,
                 image:data?.image_url,
             }
